@@ -1,0 +1,48 @@
+﻿@model WebControlLibrary.Models.Entites.Reader
+
+@{
+    ViewData["Title"] = "Chi Tiết Độc Giả";
+}
+
+<h1>@ViewData["Title"]</h1>
+
+<div>
+    <h4>Độc Giả</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            Họ và Tên
+        </dt>
+        <dd class="col-sm-10">
+            @Model.FullName
+        </dd>
+        <dt class="col-sm-2">
+            Ngày Sinh
+        </dt>
+        <dd class="col-sm-10">
+            @Model.DateOfBirth
+        </dd>
+        <dt class="col-sm-2">
+            Địa Chỉ
+        </dt>
+        <dd class="col-sm-10">
+            @Model.Address
+        </dd>
+        <dt class="col-sm-2">
+            Số Điện Thoại
+        </dt>
+        <dd class="col-sm-10">
+            @Model.PhoneNumber
+        </dd>
+        <dt class="col-sm-2">
+            Email
+        </dt>
+        <dd class="col-sm-10">
+            @Model.Email
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.ReaderId" class="btn btn-warning">Sửa</a>
+    <a asp-action="Index" class="btn btn-secondary">Quay lại</a>
+</div>

@@ -1,0 +1,48 @@
+﻿@model WebControlLibrary.Models.Entites.Book
+
+@{
+    ViewData["Title"] = "Chi tiết sách";
+}
+
+<h1>@ViewData["Title"]</h1>
+
+<div>
+    <h4>Sách</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            Tên sách
+        </dt>
+        <dd class="col-sm-10">
+            @Model.Title
+        </dd>
+        <dt class="col-sm-2">
+            Tác giả
+        </dt>
+        <dd class="col-sm-10">
+            @Model.Author
+        </dd>
+        <dt class="col-sm-2">
+            Thể loại
+        </dt>
+        <dd class="col-sm-10">
+            @Model.Genre
+        </dd>
+        <dt class="col-sm-2">
+            ISBN
+        </dt>
+        <dd class="col-sm-10">
+            @Model.Isbn
+        </dd>
+        <dt class="col-sm-2">
+            Số lượng
+        </dt>
+        <dd class="col-sm-10">
+            @Model.Quantity
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.BookId" class="btn btn-warning">Sửa</a> |
+    <a asp-action="Index" class="btn btn-secondary">Quay lại</a>
+</div>

@@ -1,0 +1,32 @@
+﻿@model WebControlLibrary.Models.Entites.Book
+
+@{
+    ViewData["Title"] = "Chỉnh sửa sách";
+}
+
+<h1>@ViewData["Title"]</h1>
+
+<form method="post" asp-action="Edit" asp-route-id="@Model.BookId">
+    <input type="hidden" asp-for="BookId"/>
+    <div class="form-group">
+        <label for="Title">Tên sách</label>
+        <input type="text" class="form-control" id="Title" name="Title" value="@Model.Title" required/>
+    </div>
+    <div class="form-group">
+        <label for="Author">Tác giả</label>
+        <input type="text" class="form-control" id="Author" name="Author" value="@Model.Author" required/>
+    </div>
+    <div class="form-group">
+        <label for="Genre">Thể loại</label>
+        <input type="text" class="form-control" id="Genre" name="Genre" value="@Model.Genre"/>
+    </div>
+    <div class="form-group">
+        <label for="Isbn">ISBN</label>
+        <input type="text" class="form-control" id="Isbn" name="Isbn" value="@Model.Isbn"/>
+    </div>
+    <div class="form-group">
+        <label for="Quantity">Số lượng</label>
+        <input type="number" class="form-control" id="Quantity" name="Quantity" value="@Model.Quantity" required/>
+    </div>
+    <button type="submit" class="btn btn-primary">Cập nhật</button>
+</form>

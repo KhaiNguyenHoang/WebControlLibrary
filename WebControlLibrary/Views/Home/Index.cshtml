@@ -1,0 +1,35 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="mt-5 container text-center">
+    <h1 class="display-4 mb-4">Welcome to the Library Management System</h1>
+    <p class="lead mb-5">
+        Manage your library efficiently. Use the navigation buttons below to access different sections.
+    </p>
+
+    <div class="row">
+        <div class="col-md-4 mb-4">
+            <a href="@Url.Action("Index", "Book")" class="btn btn-primary btn-lg w-100">
+                <i class="fas fa-book"></i> Manage Books
+            </a>
+        </div>
+        <div class="col-md-4 mb-4">
+            <a href="@Url.Action("Index", "Borrowing")" class="btn btn-success btn-lg w-100">
+                <i class="fas fa-hand-holding"></i> Manage Borrowings
+            </a>
+        </div>
+        <div class="col-md-4 mb-4">
+            <a href="@Url.Action("Index", "Reader")" class="btn btn-info btn-lg w-100">
+                <i class="fas fa-user"></i> Manage Readers
+            </a>
+        </div>
+    </div>
+</div>
+
+<!-- Optional: Add some additional styling or footer content -->
+<div class="mt-5 text-center">
+    <p class="text-muted">
+        Powered by <a href="https://learn.microsoft.com/aspnet/core" target="_blank">ASP.NET Core</a>. © 2024 Library Management
+    </p>
+</div>

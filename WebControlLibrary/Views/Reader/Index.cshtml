@@ -1,0 +1,37 @@
+﻿@model IEnumerable<WebControlLibrary.Models.Entites.Reader>
+
+@{
+    ViewData["Title"] = "Danh Sách Độc Giả";
+}
+
+<h1>@ViewData["Title"]</h1>
+
+<p>
+    <a asp-action="Create" class="btn btn-primary">Thêm Độc Giả</a>
+</p>
+
+<table class="table">
+    <thead>
+    <tr>
+        <th>Họ và Tên</th>
+        <th>Email</th>
+        <th>Số Điện Thoại</th>
+        <th>Hành Động</th>
+    </tr>
+    </thead>
+    <tbody>
+    @foreach (var reader in Model)
+    {
+        <tr>
+            <td>@reader.FullName</td>
+            <td>@reader.Email</td>
+            <td>@reader.PhoneNumber</td>
+            <td>
+                <a asp-action="Details" asp-route-id="@reader.ReaderId" class="btn btn-info">Xem</a>
+                <a asp-action="Edit" asp-route-id="@reader.ReaderId" class="btn btn-warning">Sửa</a>
+                <a asp-action="Delete" asp-route-id="@reader.ReaderId" class="btn btn-danger" onclick="return confirm('Bạn có chắc chắn muốn xóa?');">Xóa</a>
+            </td>
+        </tr>
+    }
+    </tbody>
+</table>

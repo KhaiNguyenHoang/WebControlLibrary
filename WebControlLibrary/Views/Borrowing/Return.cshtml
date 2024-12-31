@@ -1,0 +1,42 @@
+﻿@model WebControlLibrary.Models.Entites.Borrowing
+
+<h2>Return Borrowing</h2>
+
+<form asp-action="Return" method="post">
+    <input type="hidden" name="id" value="@Model.BorrowId" />
+    
+    <div class="form-group">
+        <label for="ReturnDate">Return Date</label>
+        <input type="date" id="ReturnDate" name="returnDate" class="form-control" required />
+    </div>
+    
+    <div class="form-group">
+        <label for="LateFee">Late Fee ($)</label>
+        <input type="number" id="LateFee" name="lateFee" class="form-control" step="0.01" readonly />
+    </div>
+    
+    <button type="submit" class="btn btn-primary">Submit</button>
+    <a class="btn btn-secondary" asp-action="Index">Cancel</a>
+</form>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        const returnDateInput = document.getElementById("ReturnDate");
+        const lateFeeInput = document.getElementById("LateFee");
+
+        // Borrow Due Date from the model
+        const dueDate = new Date('@Model.DueDate.ToString("yyyy-MM-dd")');
+
+        returnDateInput.addEventListener("change", function () {
+            const returnDate = new Date(this.value);
+            
+            if (returnDate > dueDate) {
+                // Calculate late days
+                const lateDays = Math.ceil((returnDate - dueDate) / (1000 * 60 * 60 * 24)); // Difference in days
+                lateFeeInput.value = lateDays; // $1 per day
+            } else {
+                lateFeeInput.value = 0; // No late fee
+            }
+        });
+    });
+</script>

@@ -1,0 +1,40 @@
+﻿@model IEnumerable<WebControlLibrary.Models.Entites.Book>
+
+@{
+    ViewData["Title"] = "Danh sách sách";
+}
+
+<h1>@ViewData["Title"]</h1>
+
+<p>
+    <a href="@Url.Action("Create")" class="btn btn-primary">Thêm sách mới</a>
+</p>
+
+<table class="table">
+    <thead>
+    <tr>
+        <th>Tên sách</th>
+        <th>Tác giả</th>
+        <th>Thể loại</th>
+        <th>ISBN</th>
+        <th>Số lượng</th>
+        <th>Hành động</th>
+    </tr>
+    </thead>
+    <tbody>
+    @foreach (var book in Model)
+    {
+        <tr>
+            <td>@book.Title</td>
+            <td>@book.Author</td>
+            <td>@book.Genre</td>
+            <td>@book.Isbn</td>
+            <td>@book.Quantity</td>
+            <td>
+                <a href="@Url.Action("Edit", new { id = book.BookId })" class="btn btn-warning">Sửa</a>
+                <a href="@Url.Action("Delete", new { id = book.BookId })" class="btn btn-danger" onclick="return confirm('Bạn chắc chắn muốn xóa sách này?')">Xóa</a>
+            </td>
+        </tr>
+    }
+    </tbody>
+</table>

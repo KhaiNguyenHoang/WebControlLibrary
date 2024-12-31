@@ -1,0 +1,36 @@
+﻿@model WebControlLibrary.Models.Entites.Borrowing
+
+<h2>Create Borrowing</h2>
+
+<form asp-action="Create" method="post">
+    <div class="form-group">
+        <label for="ReaderId">Reader</label>
+        <select id="ReaderId" name="ReaderId" class="form-control" required>
+            <option value="">Select a reader</option>
+            @foreach (var reader in ViewBag.Readers)
+            {
+                <option value="@reader.ReaderId">@reader.FullName</option>
+            }
+        </select>
+    </div>
+    <div class="form-group">
+        <label for="BookId">Book</label>
+        <select id="BookId" name="BookId" class="form-control" required>
+            <option value="">Select a book</option>
+            @foreach (var book in ViewBag.Books)
+            {
+                <option value="@book.BookId">@book.Title</option>
+            }
+        </select>
+    </div>
+    <div class="form-group">
+        <label for="BorrowDate">Borrow Date</label>
+        <input type="date" id="BorrowDate" name="BorrowDate" class="form-control" required />
+    </div>
+    <div class="form-group">
+        <label for="DueDate">Due Date</label>
+        <input type="date" id="DueDate" name="DueDate" class="form-control" required />
+    </div>
+    <button type="submit" class="btn btn-primary">Create</button>
+    <a class="btn btn-secondary" asp-action="Index">Cancel</a>
+</form>

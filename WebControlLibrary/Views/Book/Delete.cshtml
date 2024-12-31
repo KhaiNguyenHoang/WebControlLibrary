@@ -1,0 +1,37 @@
+﻿@model WebControlLibrary.Models.Entites.Book
+
+@{
+    ViewData["Title"] = "Xóa sách";
+}
+
+<h1>@ViewData["Title"]</h1>
+
+<h3>Bạn có chắc chắn muốn xóa sách này không?</h3>
+<div>
+    <h4>Sách</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            Tên sách
+        </dt>
+        <dd class="col-sm-10">
+            @Model.Title
+        </dd>
+        <dt class="col-sm-2">
+            Tác giả
+        </dt>
+        <dd class="col-sm-10">
+            @Model.Author
+        </dd>
+        <dt class="col-sm-2">
+            Thể loại
+        </dt>
+        <dd class="col-sm-10">
+            @Model.Genre
+        </dd>
+    </dl>
+</div>
+<form method="post" asp-action="DeleteConfirmed" asp-route-id="@Model.BookId">
+    <button type="submit" class="btn btn-danger">Xóa</button> |
+    <a asp-action="Index" class="btn btn-secondary">Quay lại</a>
+</form>

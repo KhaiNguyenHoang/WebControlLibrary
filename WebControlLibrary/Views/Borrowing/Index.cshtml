@@ -1,0 +1,45 @@
+﻿@model IEnumerable<WebControlLibrary.Models.Entites.Borrowing>
+
+<h2>Borrowing List</h2>
+
+@if (Model != null && Model.Any())
+{
+    <table class="table-bordered table">
+        <thead>
+        <tr>
+            <th>Borrow ID</th>
+            <th>Reader Name</th>
+            <th>Book Title</th>
+            <th>Borrow Date</th>
+            <th>Due Date</th>
+            <th>Return Date</th>
+            <th>Actions</th>
+        </tr>
+        </thead>
+        <tbody>
+        @foreach (var borrowing in Model)
+        {
+            <tr>
+                <td>@borrowing.BorrowId</td>
+                <td>@(borrowing.Reader != null ? borrowing.Reader.FullName : "Unknown")</td>
+                <td>@(borrowing.Book != null ? borrowing.Book.Title : "Unknown")</td>
+                <td>@borrowing.BorrowDate.ToShortDateString()</td>
+                <td>@borrowing.DueDate.ToShortDateString()</td>
+                <td>@(borrowing.ReturnDate.HasValue ? borrowing.ReturnDate.Value.ToShortDateString() : "Not Returned")</td>
+                <td>
+                    @if (!borrowing.ReturnDate.HasValue)
+                    {
+                        <a class="btn btn-warning" asp-action="Return" asp-route-id="@borrowing.BorrowId">Return</a>
+                    }
+                </td>
+            </tr>
+        }
+        </tbody>
+    </table>
+}
+else
+{
+    <p>No borrowings found.</p>
+}
+
+<a class="btn btn-primary" asp-action="Create">Create Borrowing</a>
